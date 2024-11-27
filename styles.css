@@ -42,6 +42,7 @@ body {
     grid-auto-rows: 150px;
     gap: 10px;
     padding: 10px;
+    grid-auto-flow: dense; /* Memastikan elemen grid memenuhi ruang kosong */
 }
 
 /* Grid Item Styling */
@@ -50,10 +51,13 @@ body {
     overflow: hidden;
     position: relative;
     border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .grid-item.tall {
-    grid-row: span 2;
+    grid-row: span 2; /* Memanjangkan elemen secara vertikal */
 }
 
 .grid-item img {
