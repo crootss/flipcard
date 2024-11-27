@@ -37,18 +37,20 @@ function startFlipping() {
 
         // Jadwalkan flip secara bergantian
         setInterval(() => {
+            // Ubah gambar belakang sebelum flip dimulai
+            backImage.src = images[Math.floor(Math.random() * images.length)];
+
             // Mulai animasi flip
             item.classList.add('flipping');
 
-            // Setelah animasi selesai (800ms), tukar gambar
+            // Hapus kelas flip setelah animasi selesai
             setTimeout(() => {
+                item.classList.remove('flipping');
+
                 // Tukar gambar depan dan belakang
                 const temp = frontImage.src;
                 frontImage.src = backImage.src;
-                backImage.src = images[(Math.floor(Math.random() * images.length))];
-
-                // Kembali ke posisi awal
-                item.classList.remove('flipping');
+                backImage.src = temp; // Siapkan gambar baru untuk flip berikutnya
             }, 800); // Durasi animasi sesuai CSS
         }, 3000 + index * 500); // Interval untuk setiap kotak
     });
