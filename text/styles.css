@@ -99,17 +99,12 @@ body {
     color: white;
     text-align: left;
     transition: opacity 0.3s ease;
-    opacity: 0; /* Default disembunyikan */
+    opacity: 1; /* Default disembunyikan */
     z-index: 2;
 }
 
 .grid-item:hover .overlay {
     opacity: 1; /* Tampilkan saat hover */
-}
-
-.grid-item .overlay h3 {
-    margin: 0;
-    font-size: 16px;
 }
 
 .grid-item .overlay p {
