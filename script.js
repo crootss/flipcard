@@ -1,4 +1,3 @@
-// Daftar gambar
 const images = [
     'image1.jpg',
     'image2.jpg',
@@ -8,17 +7,39 @@ const images = [
     'image6.jpg',
 ];
 
-// Fungsi untuk mengisi elemen grid dengan gambar
-function loadImages() {
-    const gridContainer = document.getElementById('grid-container');
-    const gridItems = gridContainer.querySelectorAll('.grid-item');
+// Fungsi untuk mengganti gambar dan memulai flip
+function startFlipping() {
+    const gridItems = document.querySelectorAll('.grid-item');
 
     gridItems.forEach((item, index) => {
-        const img = document.createElement('img');
-        img.src = images[index % images.length]; // Loop gambar jika jumlah lebih sedikit dari elemen
-        item.appendChild(img);
+        const frontImage = document.createElement('img');
+        const backImage = document.createElement('img');
+        const flipContainer = document.createElement('div');
+
+        // Tambahkan kelas pada elemen
+        flipContainer.className = 'flip-container';
+        frontImage.src = images[index % images.length];
+        backImage.src = images[(index + 1) % images.length];
+        backImage.className = 'back';
+
+        // Masukkan elemen
+        flipContainer.appendChild(frontImage);
+        flipContainer.appendChild(backImage);
+        item.appendChild(flipContainer);
+
+        // Jadwalkan flipping secara bergantian
+        setInterval(() => {
+            item.classList.toggle('flipping'); // Memulai animasi flip
+
+            // Ganti gambar setelah flip selesai (800ms sesuai dengan CSS)
+            setTimeout(() => {
+                const temp = frontImage.src;
+                frontImage.src = backImage.src;
+                backImage.src = temp;
+            }, 800);
+        }, 3000 + index * 500); // Delay bergantian antar kotak
     });
 }
 
-// Panggil fungsi setelah DOM dimuat
-document.addEventListener('DOMContentLoaded', loadImages);
+// Panggil fungsi saat DOM siap
+document.addEventListener('DOMContentLoaded', startFlipping);
