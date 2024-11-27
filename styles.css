@@ -7,18 +7,15 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: var(--bg-color, white); /* Default ke putih */
-    color: var(--text-color, black); /* Default ke hitam */
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
+    background-color: var(--bg-color, white); /* Default to white */
+    color: var(--text-color, black); /* Default to black */
 }
 
-/* Container */
+/* Responsive Container */
 .container {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    height: 100vh;
 }
 
 /* Header Styling */
@@ -37,30 +34,26 @@ body {
     color: white;
 }
 
-/* Grid Styling */
+/* Grid Layout */
 .grid {
     flex: 1;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    grid-auto-rows: 150px; /* Tinggi baris default */
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-auto-rows: 150px;
     gap: 10px;
     padding: 10px;
-    grid-auto-flow: dense; /* Memastikan pengisian ruang kosong */
 }
 
-/* Grid Item */
+/* Grid Item Styling */
 .grid-item {
     background-color: #ecf0f1;
-    border-radius: 5px;
     overflow: hidden;
     position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    border-radius: 5px;
 }
 
 .grid-item.tall {
-    grid-row: span 2; /* Elemen vertikal yang lebih tinggi */
+    grid-row: span 2;
 }
 
 .grid-item img {
@@ -70,15 +63,7 @@ body {
     object-fit: cover;
 }
 
-/* Responsive for Larger Screens */
-@media (min-width: 768px) {
-    .grid {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Kolom lebih besar */
-        grid-auto-rows: 200px; /* Baris lebih tinggi */
-    }
-}
-
-/* Dark Mode */
+/* Dark Mode Support */
 @media (prefers-color-scheme: dark) {
     :root {
         --bg-color: black;

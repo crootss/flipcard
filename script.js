@@ -4,8 +4,7 @@ const imageSets = [
     'image3.jpg',
     'image4.jpg',
     'image5.jpg',
-    'image6.jpg',
-    'image7.jpg'
+    'image6.jpg'
 ];
 
 function loadImages() {
@@ -14,7 +13,7 @@ function loadImages() {
 
     gridItems.forEach((item, index) => {
         const img = document.createElement('img');
-        img.src = imageSets[index % imageSets.length]; // Loop gambar
+        img.src = imageSets[index % imageSets.length]; // Loop through images
         item.appendChild(img);
     });
 }
