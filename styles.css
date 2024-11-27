@@ -7,15 +7,18 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: var(--bg-color, white); /* Default to white */
-    color: var(--text-color, black); /* Default to black */
-}
-
-/* Responsive Container */
-.container {
+    background-color: var(--bg-color, white); /* Default ke putih */
+    color: var(--text-color, black); /* Default ke hitam */
     display: flex;
     flex-direction: column;
     height: 100vh;
+}
+
+/* Container */
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 /* Header Styling */
@@ -34,30 +37,30 @@ body {
     color: white;
 }
 
-/* Grid Layout */
+/* Grid Styling */
 .grid {
     flex: 1;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    grid-auto-rows: 150px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-auto-rows: 150px; /* Tinggi baris default */
     gap: 10px;
     padding: 10px;
-    grid-auto-flow: dense; /* Memastikan elemen grid memenuhi ruang kosong */
+    grid-auto-flow: dense; /* Memastikan pengisian ruang kosong */
 }
 
-/* Grid Item Styling */
+/* Grid Item */
 .grid-item {
     background-color: #ecf0f1;
+    border-radius: 5px;
     overflow: hidden;
     position: relative;
-    border-radius: 5px;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 }
 
 .grid-item.tall {
-    grid-row: span 2; /* Memanjangkan elemen secara vertikal */
+    grid-row: span 2; /* Elemen vertikal yang lebih tinggi */
 }
 
 .grid-item img {
@@ -67,7 +70,15 @@ body {
     object-fit: cover;
 }
 
-/* Dark Mode Support */
+/* Responsive for Larger Screens */
+@media (min-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Kolom lebih besar */
+        grid-auto-rows: 200px; /* Baris lebih tinggi */
+    }
+}
+
+/* Dark Mode */
 @media (prefers-color-scheme: dark) {
     :root {
         --bg-color: black;
