@@ -29,14 +29,19 @@ function startFlipping() {
 
         // Jadwalkan flipping secara bergantian
         setInterval(() => {
-            item.classList.toggle('flipping'); // Memulai animasi flip
+            // Memulai flip ke sisi belakang
+            item.classList.add('flipping');
 
-            // Ganti gambar setelah flip selesai (800ms sesuai dengan CSS)
+            // Setelah animasi selesai (800ms), ganti gambar
             setTimeout(() => {
+                // Tukar gambar
                 const temp = frontImage.src;
                 frontImage.src = backImage.src;
-                backImage.src = temp;
-            }, 800);
+                backImage.src = images[(Math.floor(Math.random() * images.length))]; // Gambar baru acak
+
+                // Kembali ke posisi awal
+                item.classList.remove('flipping');
+            }, 800); // 800ms sesuai dengan durasi animasi CSS
         }, 3000 + index * 500); // Delay bergantian antar kotak
     });
 }
