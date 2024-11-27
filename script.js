@@ -5,9 +5,18 @@ const images = [
     'image4.jpg',
     'image5.jpg',
     'image6.jpg',
+    'image7.jpg',
+    'image8.jpg',
+    'image9.jpg',
+    'image10.jpg',
+    'image11.jpg',
+    'image12.jpg',
+    'image13.jpg',
+    'image14.jpg',
+    'image15.jpg',
 ];
 
-// Fungsi untuk mengganti gambar dan memulai flip
+// Fungsi untuk memulai flip
 function startFlipping() {
     const gridItems = document.querySelectorAll('.grid-item');
 
@@ -16,35 +25,34 @@ function startFlipping() {
         const backImage = document.createElement('img');
         const flipContainer = document.createElement('div');
 
-        // Tambahkan kelas pada elemen
+        // Tambahkan kelas dan gambar
         flipContainer.className = 'flip-container';
         frontImage.src = images[index % images.length];
         backImage.src = images[(index + 1) % images.length];
         backImage.className = 'back';
 
-        // Masukkan elemen
         flipContainer.appendChild(frontImage);
         flipContainer.appendChild(backImage);
         item.appendChild(flipContainer);
 
-        // Jadwalkan flipping secara bergantian
+        // Jadwalkan flip secara bergantian
         setInterval(() => {
-            // Memulai flip ke sisi belakang
+            // Mulai animasi flip
             item.classList.add('flipping');
 
-            // Setelah animasi selesai (800ms), ganti gambar
+            // Setelah animasi selesai (800ms), tukar gambar
             setTimeout(() => {
-                // Tukar gambar
+                // Tukar gambar depan dan belakang
                 const temp = frontImage.src;
                 frontImage.src = backImage.src;
-                backImage.src = images[(Math.floor(Math.random() * images.length))]; // Gambar baru acak
+                backImage.src = images[(Math.floor(Math.random() * images.length))];
 
                 // Kembali ke posisi awal
                 item.classList.remove('flipping');
-            }, 800); // 800ms sesuai dengan durasi animasi CSS
-        }, 3000 + index * 500); // Delay bergantian antar kotak
+            }, 800); // Durasi animasi sesuai CSS
+        }, 3000 + index * 500); // Interval untuk setiap kotak
     });
 }
 
-// Panggil fungsi saat DOM siap
+// Panggil fungsi setelah DOM selesai dimuat
 document.addEventListener('DOMContentLoaded', startFlipping);
