@@ -80,12 +80,12 @@ body {
 }
 
 .grid-item .flip-container img.back {
-    transform: rotateY(90deg); /* Posisi awal sisi belakang */
+    transform: rotateY(180deg); /* Posisi sisi belakang */
 }
 
 /* Flip Animasi */
 .grid-item.flipping .flip-container {
-    transform: rotateY(90deg); /* Flip ke sisi belakang */
+    transform: rotateY(180deg); /* Flip ke sisi belakang */
 }
 
 /* Dark Mode Support */
